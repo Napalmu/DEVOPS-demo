@@ -1,0 +1,23 @@
+image: openjdk:latest
+
+build:
+    stage: build
+    script:
+        - javac SiteGen.java
+
+test:
+    stage: test
+    script:
+        - javac -cp "./junit-platform-console-standalone-1.8.1.jar" SiteGenTest.java SiteGen.java
+        - java -jar junit-platform-console-standalone-1.8.1.jar -cp "." -c SiteGenTest 
+
+pages:
+    stage: deploy
+    script:
+        - javac SiteGen.java
+        - java SiteGen
+    artifacts:
+        paths:
+            - public
+    only:
+        - main
