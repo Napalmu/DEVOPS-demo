@@ -18,7 +18,7 @@ class SiteGen {
                 "<h1>" + siteTitle + "</h1>" +
                 "<ul>" + movieList.stream().map(i -> "<li>"+ i + "</li>").collect(Collectors.joining()) + "</ul>" +
             "</body>" +
-        "<html>";
+        "</html>";
 
     public static void main(String args[]) throws Exception {
         Files.createDirectory(Paths.get("public/"));
